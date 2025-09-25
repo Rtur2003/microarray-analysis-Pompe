@@ -76,8 +76,8 @@ invisible(lapply(packages, library, character.only = TRUE))␊
 pkgbuild::has_build_tools(debug = TRUE)
 
 args <- commandArgs(trailingOnly = TRUE)
-FDR_THRESH   <- if (length(args) >= 1) as.numeric(args[1]) else 0.1
-LOGFC_THRESH <- if (length(args) >= 2) as.numeric(args[2]) else 0.5
+FDR_THRESH   <- if (length(args) >= 1) as.numeric(args[1]) else 0.05
+LOGFC_THRESH <- if (length(args) >= 2) as.numeric(args[2]) else 1
 
 #-----------------------------   Load CEL files and normalize with RMA    ---------------------------------------------
 
@@ -1200,6 +1200,7 @@ meta_mir <- list(dataset="GSE38680", n_pompe=sum(groups=="Pompe"),
                  n_control=sum(groups=="Control"), adj="BH",
                  note_small_n=TRUE, date=as.character(Sys.Date()))
 jsonlite::write_json(meta_mir, file.path(mir_dir, "_analysis_meta.json"), pretty=TRUE)
+
 
 
 
