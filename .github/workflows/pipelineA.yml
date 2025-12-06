@@ -1,0 +1,35 @@
+name: Pipeline A
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment/environment.yml
+          activate-environment: pompe
+          auto-activate-base: false
+          miniforge-version: latest
+
+      - name: Run analysis (CI-safe)
+        shell: bash -l {0}
+        env:
+          SKIP_MULTIMIR: "1"
+          RESULTS_DIR: results
+        run: |
+          conda activate pompe
+          if compgen -G "metadata/*.CEL" > /dev/null; then
+            Rscript microarray_analysis_pompe.R
+          else
+            echo "No CEL files found under metadata/. Skipping pipeline run in CI."
+          fi

@@ -1,0 +1,15 @@
+# Ignore analysis outputs
+results/
+plots/
+logs/
+
+# R/RStudio files
+*.Rhistory
+*.Rproj.user/
+.RData
+
+# Python caches
+__pycache__/
+
+# OS
+.DS_Store

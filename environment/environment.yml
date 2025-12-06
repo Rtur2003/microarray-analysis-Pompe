@@ -1,0 +1,29 @@
+name: pompe
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - r-ggplot2
+  - r-ggrepel
+  - r-pheatmap
+  - r-gridextra
+  - r-dplyr
+  - r-tidyr
+  - r-data.table
+  - r-jsonlite
+  - r-umap
+  - r-yaml
+  - bioconductor-affy
+  - bioconductor-limma
+  - bioconductor-biobase
+  - bioconductor-annotationdbi
+  - bioconductor-hgu133plus2.db
+  - bioconductor-clusterprofiler
+  - bioconductor-org.hs.eg.db
+  - bioconductor-enrichplot
+  - bioconductor-dose
+  - bioconductor-gosemsim
+  - bioconductor-multimir
+  - pip:
+      - pre-commit

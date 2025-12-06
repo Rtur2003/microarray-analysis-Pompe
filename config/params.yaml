@@ -1,0 +1,11 @@
+deg:
+  design: "~ 0 + group"
+  contrast: "Pompe - Control"
+  logFC: 1.0
+  padj: 0.05
+plots:
+  volcano_topn: 20
+enrichment:
+  ontologies: ["BP", "CC", "MF"]
+multimir:
+  enabled: true

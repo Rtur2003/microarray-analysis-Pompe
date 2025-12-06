@@ -1,0 +1,2 @@
+metadata/*.CEL filter=lfs diff=lfs merge=lfs -text
+metadata/pheno.csv filter=lfs diff=lfs merge=lfs -text
