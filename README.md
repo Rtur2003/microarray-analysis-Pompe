@@ -13,7 +13,10 @@ conda activate pompe
 git lfs install
 git lfs pull  # pulls CEL files and pheno.csv into metadata/
 
-# 3) run analysis (multiMiR disabled in CI/offline)
+# 3) validate configuration (recommended)
+python tools/validate_config.py
+
+# 4) run analysis (multiMiR disabled in CI/offline)
 SKIP_MULTIMIR=1 Rscript microarray_analysis_pompe.R
 ```
 
@@ -24,6 +27,7 @@ Results and plots are written to `results/` (override with `RESULTS_DIR=/path/to
 - `config/` – `samplesheet.csv` and `params.yaml` (DEG thresholds, plot settings, multiMiR flag)
 - `metadata/` – CEL files and `pheno.csv` (tracked via Git LFS), provenance and variable dictionary
 - `environment/` – Conda environment specification
+- `tools/` – Python validation and automation utilities (see `tools/README.md`)
 - `docs/` – additional documentation (methods, reproducibility notes)
 
 ## Data and ethics
