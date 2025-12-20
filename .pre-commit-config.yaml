@@ -6,3 +6,11 @@ repos:
       - id: trailing-whitespace
       - id: check-yaml
       - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: validate-config
+        name: Validate configuration files
+        entry: python tools/validate_config.py
+        language: system
+        pass_filenames: false
+        files: ^config/.*\.(yaml|csv)$
