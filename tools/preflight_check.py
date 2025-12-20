@@ -252,15 +252,28 @@ class PreflightCheck:
         if self.errors:
             print("✗ FAILED: Cannot proceed with analysis")
             print("Fix critical errors before running the pipeline.")
-            return 1
         elif self.warnings:
             print("⚠ WARNINGS PRESENT: Proceed with caution")
             print("You can run the pipeline, but be aware of warnings.")
-            return 2
         else:
             print("✓ ALL CHECKS PASSED: Ready to run analysis")
             print("\nTo run the pipeline:")
             print("  Rscript microarray_analysis_pompe.R")
+    
+    def get_exit_code(self) -> int:
+        """
+        Determine exit code based on check results.
+        
+        Returns:
+            0: All checks passed
+            1: Critical errors found
+            2: Warnings present
+        """
+        if self.errors:
+            return 1
+        elif self.warnings:
+            return 2
+        else:
             return 0
 
 
@@ -288,7 +301,8 @@ def main() -> int:
     checker.check_pipeline_script()
     
     # Print summary and return exit code
-    return checker.print_summary()
+    checker.print_summary()
+    return checker.get_exit_code()
 
 
 if __name__ == '__main__':

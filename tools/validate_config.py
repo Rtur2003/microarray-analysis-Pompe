@@ -110,7 +110,7 @@ def validate_samplesheet(samplesheet_path: Path, metadata_dir: Path) -> List[Dic
     
     try:
         with open(samplesheet_path, 'r') as f:
-            # Skip empty lines
+            # Filter empty lines (samplesheet may have leading empty line)
             lines = [line for line in f if line.strip()]
             reader = csv.DictReader(lines)
             samples = list(reader)
