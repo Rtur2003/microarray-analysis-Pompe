@@ -21,6 +21,12 @@ jobs:
           auto-activate-base: false
           miniforge-version: latest
 
+      - name: Validate configuration
+        shell: bash -l {0}
+        run: |
+          conda activate pompe
+          python tools/validate_config.py
+
       - name: Run analysis (CI-safe)
         shell: bash -l {0}
         env:
